@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+<script src="handlebars-v4.0.5.js"></script>
+
+<style>
+body {
+    font:15px arial,sans-serif;
+}
+h1 {
+    margin: 0 0 10px 0;
+    padding: 5px;
+    font-size: 24px;
+    background-color: #999;
+    color: #fff;
+}
+table {
+    margin: 10px;
+}
+th, td {
+    padding: 5px;
+    border: 1px solid #999;
+}
+th {
+    background: #ccc;
+}
+tr:nth-child(odd) {
+    background: #eee;
+}
+td a {
+    color: #000;
+    text-decoration: underline;
+}
+</style>
+</head>
+<body>
+
+
+
+<script id="some-template" type="text/x-handlebars-template"> <table>
+    <thead> 
+        <th>Name</th> 
+        <th>Job Title</th> 
+        <th>Twitter</th> 
+    </thead> 
+    <tbody> 
+        {{#users}} 
+        <tr> 
+            <td>{{fullName person}}</td> 
+            <td>{{jobTitle}}</td> 
+            <td><a href="https://twitter.com/{{twitter}}">@{{twitter}}</a></td> 
+        </tr> 
+        {{/users}} 
+    </tbody> 
+</table> 
+</script>
+</body>
+
+
+
+<script>
+
+      
+    
+
+
+var source = $("#some-template").html(); 
+var template = Handlebars.compile(source); 
+
+var data = { 
+    users: [ { 
+        person: {
+            firstName: "Garry", 
+            lastName: "Finch"
+        },
+        jobTitle: "Front End Technical Lead",
+        twitter: "gazraa" 
+    }, {
+        person: {
+            firstName: "Garry", 
+            lastName: "Finch"
+        }, 
+        jobTitle: "Photographer",
+        twitter: "photobasics"
+    }, {
+        person: {
+            firstName: "Garry", 
+            lastName: "Finch"
+        }, 
+        jobTitle: "LEGO Geek",
+        twitter: "minifigures"
+    } ]
+}; 
+
+Handlebars.registerHelper('fullName', function(person) {
+  return person.firstName + " " + person.lastName;
+});
+
+$('body').append(template(data));
+
+
+
+</script>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+<script src="handlebars-v4.0.5.js"></script>
+
+
+</head>
+<body>
+
+
+
+<script id="some-template" type="text/x-handlebars-template"> <table>
+    <strong> Name</strong> {{name}}<br/>
+    <strong> address</strong> {{address}}<br/>
+    <strong> mobile</strong> {{mobile}}
+</script>
+</body>
+
+
+
+<script>
+var source = $("#some-template").html(); 
+var template = Handlebars.compile(source); 
+
+var data = { 
+	    name:"vishal pawar",
+	    address:"Mumbai",
+            mobile:"7666091996"
+           }; 
+
+
+$('body').append(template(data));
+
+
+
+</script>
+</html>

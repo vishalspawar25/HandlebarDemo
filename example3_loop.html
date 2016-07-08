@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+<script src="handlebars-v4.0.5.js"></script>
+
+
+</head>
+<body>
+
+<div id="divCities" style="border:solid 1px #ccc">
+</div>
+
+</body>
+
+<script id="some-template" type="text/x-handlebars-template"> <table>
+    
+Select City:
+<select>
+
+{{#each cities}}
+   
+ <option value="{{id}}">{{text}}</option>   
+                
+{{/each}}
+
+ 
+</select>
+
+
+            
+</script>
+
+
+
+
+<script>
+var source = $("#some-template").html(); 
+var template = Handlebars.compile(source); 
+
+  var data ={
+
+		"cities":
+		[
+			{ "id": "1", "text": "Mumbai" },
+			{ "id": "2", "text": "Banglore" },
+			{ "id": "3", "text": "Hyderabad" },
+			{ "id": "4", "text": "Chennai" }
+		]
+}
+
+$('#divCities').append(template(data));
+
+
+
+</script>
+</html>
